@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forever Hoda</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:tahoma;
+    background:#f4fff4;
+    direction:rtl;
+}
+
+.header{
+    background:#1c7d31;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.header h1{
+    margin:0;
+    font-size:42px;
+}
+
+.header p{
+    margin-top:10px;
+    font-size:18px;
+    color:#e8ffe8;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    padding:15px;
+    background:#2e7d32;
+}
+
+.menu a{
+    color:white !important;
+    text-decoration:none !important;
+    font-size:16px;
+    font-weight:bold;
+    display:block;
+    white-space:nowrap;
+}
+
+.menu a:hover{
+    color:#dcedc8 !important;
+}
+#cart-count{
+    display:inline-block;
+    min-width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    background:white;
+    color:#2e7d32;
+    border-radius:50%;
+    font-weight:bold;
+    margin-right:5px;
+    padding:0 5px;
+    box-sizing:border-box;
+}
+
+
+.hero{
+    text-align:center;
+    padding:60px;
+}
+
+.hero h1{
+    color:#1c7d31;
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.8;
+    color:#555;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:8px;
+    background:#2e7d32;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1b5e20;
+    transform:translateY(-2px);
+}
+
+.products{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:40px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.2);
+}
+
+.card h2{
+    color:#1c7d31;
+}
+
+.card p{
+    font-size:16px;
+    color:#666;
+    line-height:1.8;
+}
+
+.card .photo{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.card .price{
+    font-size:18px;
+    font-weight:bold;
+    margin:12px 0;
+    color:red;
+}
+
+.buy-btn{
+    padding:10px 25px;
+    border:none;
+    border-radius:8px;
+    background:#2e7d32;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button{
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1b5e20;
+    transform:scale(1.05);
+}
+
+#cart-items{
+    width:90%;
+    max-width:600px;
+    margin:20px auto;
+    padding:15px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+#cart-items p{
+    padding:12px;
+    margin:10px 0;
+    background:#f5f5f5;
+    border-radius:8px;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+#cart-items button{
+    border:none;
+    border-radius:6px;
+    padding:6px 10px;
+    margin:3px;
+    cursor:pointer;
+    flex-shrink:0;
+}
+
+.remove-btn{
+    background:#d9534f;
+    color:white;
+}
+
+.increase-btn,
+.decrease-btn{
+    background:#e8f5e9;
+    color:#222;
+    font-size:16px;
+    font-weight:bold;
+}
+
+#cart-total{
+    width:90%;
+    max-width:600px;
+    margin:10px auto 20px;
+    padding:12px;
+    background:#f1f8e9;
+    border-radius:10px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    color:#1c7d31;
+}
+
+#clear-cart{
+    display:block;
+    margin:10px auto 25px;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#555;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
+
+#clear-cart:hover{
+    background:#333;
+    transform:translateY(-2px);
+}
+#about{
+    width:90%;
+    max-width:800px;
+    margin:40px auto;
+    padding:30px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    text-align:center;
+    box-sizing:border-box;
+}
+
+#about h2{
+    color:#1c7d31;
+    margin-bottom:15px;
+}
+
+#about p{
+    color:#555;
+    font-size:17px;
+    line-height:2;
+}
+
+#contact{
+    width:90%;
+    max-width:600px;
+    margin:40px auto;
+    padding:25px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    text-align:center;
+    box-sizing:border-box;
+}
+
+#contact h2{
+    color:#1c7d31;
+    margin-bottom:15px;
+}
+
+#contact p{
+    color:#555;
+    font-size:17px;
+    line-height:2;
+}
+
+.instagram-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 20px;
+    background:#2e7d32;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.instagram-btn:hover{
+    background:#1b5e20;
+    transform:translateY(-2px);
+}
+#order{
+    display:block;
+    width:90%;
+    max-width:600px;
+    margin:40px auto;
+    padding:25px;
+    background:#ffffff;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    text-align:center;
+    box-sizing:border-box;
+}
+
+#order h2{
+    color:#1c7d31;
+    margin:0 0 20px 0;
+}
+
+#order-form{
+    display:block;
+    width:100%;
+}
+
+#order-form input{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    margin:0 0 15px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-family:tahoma;
+    font-size:15px;
+}
+
+#order-form textarea{
+    display:block;
+    width:100%;
+    height:100px;
+    box-sizing:border-box;
+    padding:12px;
+    margin:0 0 15px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-family:tahoma;
+    font-size:15px;
+    resize:vertical;
+}
+
+#order-form button{
+    display:block;
+    width:100%;
+    padding:12px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media (max-width:768px){
+
+    .menu{
+        flex-wrap:nowrap;
+        gap:8px;
+        padding:10px 5px;
+    }
+
+    .menu a{
+        font-size:13px;
+        white-space:nowrap;
+    }
+
+    .products{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:95%;
+        box-sizing:border-box;
+    }
+
+    .hero{
+        padding:20px 10px;
+    }
+
+    .hero h1{
+        font-size:24px;
+        line-height:1.5;
+    }
+
+    .hero p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    #about,
+    #contact,
+    #order{
+        width:92%;
+        padding:20px;
+    }
+
+    #about p,
+    #contact p{
+        font-size:15px;
+    }
+
+    #cart-items p{
+        white-space:normal;
+        font-size:14px;
+        overflow-wrap:break-word;
+    }
+
+    .btn{
+        padding:10px 20px;
+        font-size:15px;
+    }
+
+}
+#cart-count{
+    display:inline-block !important;
+    width:35px !important;
+    height:35px !important;
+    line-height:35px !important;
+    background:white !important;
+    color:black !important;
+    font-size:20px !important;
+    font-weight:bold !important;
+    text-align:center !important;
+    border-radius:50% !important;
+    visibility:visible !important;
+    opacity:1 !important;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header" id="home">
+
+    <h1>🌿 Forever Hoda</h1>
+
+    <p>فروشگاه اینترنتی محصولات فوراور</p>
+
+</div>
+
+<div class="menu">
+
+    <a href="#home">خانه</a>
+
+    <a href="#products">محصولات</a>
+
+    <a href="#about">درباره ما</a>
+
+    <a href="#contact">تماس با ما</a>
+
+    <span id="cart-count">0</span>
+
+</div>
+
+<div id="cart-items"></div>
+
+<p id="cart-total">جمع کل: 0 تومان</p>
+
+<button id="clear-cart">پاک کردن سبد خرید</button>
+
+<div class="hero">
+
+    <h1>زیبایی و سلامتی با محصولات فوراور</h1>
+
+    <p>به فروشگاه اینترنتی Forever Hoda خوش آمدید.</p>
+
+    <a href="#products" class="btn">مشاهده محصولات</a>
+
+</div>
+
+<div id="products" class="products">
+
+    <div class="card">
+
+        <img src="images/aloe.jpg" class="photo">
+
+        <h2>ژل آلوئه ورا</h2>
+
+        <p>تقویت سیستم ایمنی</p>
+
+        <p class="price">500,000 تومان</p>
+
+        <button class="buy-btn"
+        data-name="ژل آلوئه ورا"
+        data-price="500000">
+        خرید
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <img src="images/honey.jpg" class="photo">
+
+        <h2>عسل فوراور</h2>
+
+        <p>انرژی طبیعی</p>
+
+        <p class="price">6,250,000 تومان</p>
+
+        <button class="buy-btn"
+        data-name="عسل فوراور"
+        data-price="6250000">
+        خرید
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <img src="images/toothpaste.jpg" class="photo">
+
+        <h2>خمیر دندان فوراور</h2>
+
+        <p>مراقبت از دندان</p>
+		<p class="price">420,000 تومان</p>
+
+        <button class="buy-btn"
+        data-name="خمیر دندان فوراور"
+        data-price="420000">
+        خرید
+        </button>
+
+    </div>
+
+</div>
+<div id="about">
+
+    <h2>درباره ما</h2>
+
+    <p>
+        به فروشگاه Forever Hoda خوش آمدید.
+        هدف ما ارائه محصولات باکیفیت در زمینه زیبایی و سلامت است.
+    </p>
+
+</div>
+
+
+<div id="contact">
+
+    <h2>تماس با ما</h2>
+
+    <p>
+        برای ارتباط با ما می‌توانید از راه‌های زیر با ما در تماس باشید.
+    </p>
+
+    <p>📱 تلفن: 09169796744</p>
+
+    <p>
+        📷 اینستاگرام:
+
+        <a href="https://instagram.com/forever_hoda"
+           target="_blank"
+           class="instagram-btn">
+
+            @forever_hoda
+
+        </a>
+    </p>
+
+</div>
+
+<div id="order">
+
+    <h2>ثبت سفارش</h2>
+
+    <form id="order-form">
+
+        <input type="text"
+               id="customer-name"
+               placeholder="نام و نام خانوادگی">
+
+        <input type="tel"
+               id="customer-phone"
+               placeholder="شماره تماس">
+
+        <textarea id="customer-address"
+                  placeholder="آدرس"></textarea>
+
+        <button type="submit">
+            ثبت سفارش
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+<script src="Script.js"></script>
+
+</body>
+
+</html>
+
