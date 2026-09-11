@@ -1,4 +1,5 @@
 let count = 0;
+alert("JavaScript اجرا شد");
 let totalPrice = 0;
 
 let cart = document.querySelector("#cart-count");
